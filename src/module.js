@@ -13,20 +13,18 @@ start();
 
 // Initialize the base layer
 
-
-export function start()
-{
+export function start() {
   map = L.map("map", {
     scrollWheelZoom: true,
   });
   L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution:
-    '&copy; OSM Mapnik <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-}).addTo(map);
+    maxZoom: 19,
+    attribution:
+      '&copy; OSM Mapnik <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  }).addTo(map);
   getHistory();
   // Set the position and zoom level of the map
-  
+
   // Initialize the base layer
   L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
@@ -42,7 +40,6 @@ export function start()
   });
   return out;
 }
-
 
 export function getWeather(lat, lon) {
   const out = {};
@@ -93,7 +90,7 @@ export function setMap(lat, lon, geojson) {
   const out = {};
   out.lat = lat;
   out.lon = lon;
-  out.getWeather = getWeather(lat,lon);
+  out.getWeather = getWeather(lat, lon);
   return out;
 }
 export function buttonClick() {
@@ -104,14 +101,14 @@ export function buttonClick() {
   const updateMapWeatherRes = updateMap(city);
   const getHistoryRes = getHistory();
   const out = {
-    'updateMapAndWeather' :updateMapWeatherRes,
-    'getHistory' : getHistoryRes
+    updateMapAndWeather: updateMapWeatherRes,
+    getHistory: getHistoryRes,
   };
   console.log(out);
   return out;
 }
 export function selectorClick(city) {
- return updateMap(city);
+  return updateMap(city);
 }
 export function inputChecker() {
   const input = document.querySelector(".place");
@@ -138,7 +135,7 @@ export function updateMap(city) {
       out.setMapRes = setMapRes;
       // Do something with response.
     });
-    return out;
+  return out;
 }
 export function getHistory() {
   const out = [];
@@ -155,8 +152,8 @@ export function getHistory() {
     const storageItem = localStorage.getItem(keys[i]);
     const listItem = document.createElement("option");
     listItem.innerText = storageItem;
-    select.append(listItem);  
-    out.push(storageItem);    
+    select.append(listItem);
+    out.push(storageItem);
     i--;
   }
   return out;
