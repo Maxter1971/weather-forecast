@@ -39,7 +39,7 @@
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.1",
     "jest": "^28.1.0",
-    "jest-environment-jsdom": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.1",
     "jquery": "^3.6.0",
     "jsdom": "^19.0.0",
     "leaflet": "^1.8.0",
@@ -63,6 +63,7 @@
   "dependencies": {
     "assert": "^2.0.0",
     "html-loader": "^3.1.0",
+    "jest-environment-jsdom-latest": "^26.6.2",
     "jquery": "^3.6.0",
     "jsdom": "^19.0.0",
     "leaflet": "^1.8.0",

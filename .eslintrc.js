@@ -22,6 +22,10 @@ module.exports = {
     "import/prefer-default-export": "off",
     "no-shadow": "off",
     "no-use-before-define": "off",
+    "max-classes-per-file": "off",
+    "no-underscore-dangle": "off",
+    "default-param-last": "off",
+    "no-unused-vars": "off",
     "max-len": [
       2,
       80,

@@ -7,7 +7,6 @@ let geojsonFeature = {};
 let myLayer = {};
 let city = "";
 let map;
-start();
 
 // Set the position and zoom level of the map
 
@@ -22,7 +21,7 @@ export function start() {
     attribution:
       '&copy; OSM Mapnik <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(map);
-  getHistory();
+
   // Set the position and zoom level of the map
 
   // Initialize the base layer
@@ -46,7 +45,6 @@ export function getWeather(lat, lon) {
   $.getJSON(
     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=ce7e76cd71313e0673227d5d211c59ed`,
     (data) => {
-      console.log(data);
       out.weatherRes = data;
       const weatherDiv = document.querySelector(".weather-forecast");
       weatherDiv.innerHTML = `
@@ -62,6 +60,7 @@ export function getWeather(lat, lon) {
       `;
     }
   );
+  console.log(out);
   return out;
 }
 // функция возвращает сумму двух чисел

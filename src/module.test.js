@@ -1,5 +1,4 @@
-import L from "leaflet";
-import { getWeather } from "./module";
+import { getHistory } from "./module";
 
 // describe("start", () => {
 //  it("start result", () => {
@@ -33,7 +32,6 @@ import { getWeather } from "./module";
 // });
 describe("getWeather", () => {
   it("getWeather result", () => {
-    jest.mock("leaflet");
     document.body.innerHTML =
       '<div id="map"></div>' +
       '<div class="find">' +
@@ -51,8 +49,14 @@ describe("getWeather", () => {
       '<select class="select"></select>' +
       "</label>" +
       "</div>";
-    const getWeatherRes = getWeather(30.3806, 59.9179);
-    expect(getWeatherRes).toHaveProperty("name");
-    expect(getWeatherRes.name).toBe("Smolenskoye");
+    // jest.mock("leaflet");
+    // const button = document.body.querySelector(".button");
+    // const input = document.querySelector(".place");
+    const select = document.body.querySelector(".select");
+    const weatherDiv = document.querySelector(".weather-forecast");
+    const getHistoryRes = getHistory();
+    // const getWeatherRes = getWeather(30.3806, 59.9179);
+    // const weatherRes = getWeatherRes.weatherRes;
+    // expect(weatherRes.name).toBe("Smolenskoye");
   });
 });

@@ -1,4 +1,10 @@
-import { buttonClick, inputChecker, selectorClick } from "./module";
+import {
+  buttonClick,
+  inputChecker,
+  selectorClick,
+  start,
+  getHistory,
+} from "./module";
 import "../css/style.css";
 
 const button = document.querySelector(".button");
@@ -9,3 +15,5 @@ input.addEventListener("input", inputChecker);
 select.addEventListener("change", (e) => {
   selectorClick(e.target.value);
 });
+getHistory();
+start();
