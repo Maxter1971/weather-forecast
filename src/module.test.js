@@ -49,7 +49,8 @@ describe("getWeather", () => {
       '<select class="select"></select>' +
       "</label>" +
       "</div>";
-    // jest.mock("leaflet");
+    jest.mock("leaflet");
+    // const startRes = start();
     // const button = document.body.querySelector(".button");
     // const input = document.querySelector(".place");
     const select = document.body.querySelector(".select");

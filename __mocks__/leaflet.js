@@ -50,6 +50,11 @@ class LayersControlMock extends ControlMock {
   removeLayer(obj) {
     this._layers.splice(this._layers.indexOf(obj), 1);
   }
+
+  addTo(obj) {
+    obj.addLayer(this);
+    return this;
+  }
 }
 
 ControlMock.Layers = LayersControlMock;

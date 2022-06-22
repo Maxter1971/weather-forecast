@@ -25,10 +25,12 @@
 
 ### Структура проекта
 
-В каталоге /src расположены:
+В каталоге ./src расположены:
 index.js
 module.js
 module.test.js
+
+В каталоге ./css
 style.css
 
 **index.js** импортирует module.js, style.css, создает обработчики на поля поиска на наличие текста _inputChecker_,
@@ -42,4 +44,5 @@ _start_.
 Реализует _inputChecker_, _selectorClick_, _buttonClick_.
 
 **module.test.js** содержит тесты функций module.js
+
 **style.css** содержит стили
