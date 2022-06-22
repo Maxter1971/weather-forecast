@@ -62,8 +62,7 @@
   },
   "dependencies": {
     "assert": "^2.0.0",
-    "html-loader": "^3.1.0",
-    "jest-environment-jsdom-latest": "^26.6.2",
+    "html-loader": "^3.1.0",    
     "jquery": "^3.6.0",
     "jsdom": "^19.0.0",
     "leaflet": "^1.8.0",
