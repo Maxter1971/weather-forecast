@@ -151,19 +151,27 @@ export function getHistory() {
     const storageItem = localStorage.getItem(keys[i]);
     const listItem = document.createElement("option");
     listItem.innerText = storageItem;
-    select.append(listItem);
-    out.push(storageItem);
+    if (storageItem !== null) {
+      select.append(listItem);
+      out.push(storageItem);
+    }
+
     i--;
   }
   return out;
 }
 function setHistory() {
-  const keys = Object.keys(localStorage);
-  const i = keys.length;
-  const findResult = Object.values(localStorage).filter(
-    (value) => value === city
-  ).length;
-  if (findResult === 0) {
-    localStorage.setItem(i + 1, city);
+  if (localStorage.length === 0) {
+    localStorage.setItem(0, city);
+    localStorage.setItem(1, city);
+  } else {
+    const keys = Object.keys(localStorage);
+    const i = keys.length;
+    const findResult = Object.values(localStorage).filter(
+      (value) => value === city
+    ).length;
+    if (findResult === 0) {
+      localStorage.setItem(i + 1, city);
+    }
   }
 }
