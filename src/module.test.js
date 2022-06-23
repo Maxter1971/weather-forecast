@@ -1,4 +1,5 @@
-import { getHistory } from "./module";
+import { getHistory, setHistory, getWeather } from "./module";
+
 
 // describe("start", () => {
 //  it("start result", () => {
@@ -30,7 +31,7 @@ import { getHistory } from "./module";
 //    expect(startRes.updateMapAndWeather).not.toBeNull();
 //  });
 // });
-describe("getWeather", () => {
+describe("getHistory", () => {
   it("getWeather result", () => {
     document.body.innerHTML =
       '<div id="map"></div>' +
@@ -53,11 +54,43 @@ describe("getWeather", () => {
     // const startRes = start();
     // const button = document.body.querySelector(".button");
     // const input = document.querySelector(".place");
-    const select = document.body.querySelector(".select");
-    const weatherDiv = document.querySelector(".weather-forecast");
+    // const select = document.body.querySelector(".select");
+    // const weatherDiv = document.querySelector(".weather-forecast");
+
+    window.localStorage = {};
+    window.localStorage = (() => {
+      let store = {};
+      return {
+        getItem(key) {
+          return store[key];
+        },
+        setItem(key, value) {
+          store[key] = value.toString();
+        },
+        clear() {
+          store = {};
+        },
+        removeItem(key) {
+          delete store[key];
+        },
+      };
+    })();
+    Object.defineProperty(window, "localStorage", {
+      value: window.localStorage,
+    });
+    let city = "Москва";
+    let setHistoryRes = setHistory(city);
+    setHistoryRes = setHistory(city);
+    city = "Минск";
+    setHistoryRes = setHistory(city);
+    setHistoryRes = setHistory(city);
     const getHistoryRes = getHistory();
-    // const getWeatherRes = getWeather(30.3806, 59.9179);
-    // const weatherRes = getWeatherRes.weatherRes;
-    // expect(weatherRes.name).toBe("Smolenskoye");
+    const getWeatherRes = getWeather(30.3806, 59.9179);
+    expect(setHistoryRes.length).toBe(3);
+    expect(setHistoryRes[1]).toBe("Москва");
+    expect(getHistoryRes.length).toBe(2);
+    expect(getHistoryRes[0]).toBe("Минск");
+    expect(getHistoryRes[1]).toBe("Москва");
+    // expect(getWeatherRes).toBe("Москва");
   });
 });

@@ -91,7 +91,7 @@ export function buttonClick() {
   const input = document.querySelector(".place");
   city = input.value;
   // localStorage.setItem(city,city);
-  setHistory();
+  setHistory(city);
   const updateMapWeatherRes = updateMap(city);
   const getHistoryRes = getHistory();
   const out = {
@@ -155,18 +155,19 @@ export function getHistory() {
   }
   return out;
 }
-function setHistory() {
+export function setHistory(place) {
   if (localStorage.length === 0) {
-    localStorage.setItem(0, city);
-    localStorage.setItem(1, city);
+    localStorage.setItem(0, place);
+    localStorage.setItem(1, place);
   } else {
     const keys = Object.keys(localStorage);
     const i = keys.length;
     const findResult = Object.values(localStorage).filter(
-      (value) => value === city
+      (value) => value === place
     ).length;
     if (findResult === 0) {
-      localStorage.setItem(i + 1, city);
+      localStorage.setItem(i + 1, place);
     }
   }
+  return localStorage;
 }
