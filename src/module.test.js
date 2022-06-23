@@ -1,6 +1,5 @@
 import { getHistory, setHistory, getWeather } from "./module";
 
-
 // describe("start", () => {
 //  it("start result", () => {
 //    jest.mock('./leaflet');
