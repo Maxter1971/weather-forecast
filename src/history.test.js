@@ -20,34 +20,13 @@ describe("getHistory", () => {
       "</label>" +
       "</div>";
 
-    // window.localStorage = {};
-    window.localStorage = (() => {
-      let store = {};
-      return {
-        getItem(key) {
-          return store[key];
-        },
-        setItem(key, value) {
-          store[key] = value.toString();
-        },
-        clear() {
-          store = {};
-        },
-        removeItem(key) {
-          delete store[key];
-        },
-      };
-    })();
-    Object.defineProperty(window, "localStorage", {
-      value: window.localStorage,
-    });
     let city = "Москва";
-    let setHistoryRes = setHistory(city);
-    setHistoryRes = setHistory(city);
+    let setHistoryRes = setHistory(city, localStorage);
+    setHistoryRes = setHistory(city, localStorage);
     city = "Минск";
-    setHistoryRes = setHistory(city);
-    setHistoryRes = setHistory(city);
-    const getHistoryRes = getHistory();
+    setHistoryRes = setHistory(city, localStorage);
+    setHistoryRes = setHistory(city, localStorage);
+    const getHistoryRes = getHistory(localStorage);
     expect(setHistoryRes.length).toBe(3);
     expect(setHistoryRes[1]).toBe("Москва");
     expect(getHistoryRes.length).toBe(2);

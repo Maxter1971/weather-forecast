@@ -24,14 +24,14 @@ function updateAppByCity(city) {
     .then((data) => updateMap(data.lat, data.lon, data.geoJSON, map))
     .then((data) => getWeatherData(data.lat, data.lon))
     .then((data) => setWeather(data));
-  getHistory();
+  getHistory(localStorage);
   return true;
 }
 
 export function buttonClick() {
   const input = document.querySelector(".place");
   const city = input.value;
-  setHistory(city);
+  setHistory(city, localStorage);
   updateAppByCity(city);
   return true;
 }

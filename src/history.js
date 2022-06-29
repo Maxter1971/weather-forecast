@@ -1,8 +1,8 @@
-export function getHistory() {
+export function getHistory(storage) {
   const out = [];
   const select = document.querySelector(".select");
   select.innerHTML = "";
-  const keys = Object.keys(localStorage).sort((a, b) => a - b);
+  const keys = Object.keys(storage).sort((a, b) => a - b);
   let i = keys.length;
   let finish = 0;
   if (i > 11) {
@@ -10,7 +10,7 @@ export function getHistory() {
   }
 
   while (i > finish) {
-    const storageItem = localStorage.getItem(keys[i]);
+    const storageItem = storage.getItem(keys[i]);
     const listItem = document.createElement("option");
     listItem.innerText = storageItem;
     if (storageItem !== null) {
@@ -22,19 +22,19 @@ export function getHistory() {
   }
   return out;
 }
-export function setHistory(place) {
-  if (localStorage.length === 0) {
-    localStorage.setItem(0, place);
-    localStorage.setItem(1, place);
+export function setHistory(place, storage) {
+  if (storage.length === 0) {
+    storage.setItem(0, place);
+    storage.setItem(1, place);
   } else {
-    const keys = Object.keys(localStorage);
+    const keys = Object.keys(storage);
     const i = keys.length;
-    const findResult = Object.values(localStorage).filter(
+    const findResult = Object.values(storage).filter(
       (value) => value === place
     ).length;
     if (findResult === 0) {
-      localStorage.setItem(i + 1, place);
+      storage.setItem(i + 1, place);
     }
   }
-  return localStorage;
+  return storage;
 }
