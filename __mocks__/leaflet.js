@@ -21,11 +21,14 @@ class ControlMock extends LeafletMock.Control {
 const controlMock = (options) => new ControlMock(options);
 
 class LayersControlMock extends ControlMock {
-  constructor(baseLayers = [], overlays = [], options) {
+  constructor(baseLayers = [], tileLayers = [], overlays = [], options) {
     super(options);
     this._layers = [];
 
     baseLayers.forEach((layer, i) => {
+      this._addLayer(layer, i);
+    });
+    tileLayers.forEach((layer, i) => {
       this._addLayer(layer, i);
     });
     overlays.forEach((layer, i) => {
@@ -58,8 +61,8 @@ class LayersControlMock extends ControlMock {
 }
 
 ControlMock.Layers = LayersControlMock;
-controlMock.layers = (baseLayers, overlays, options) =>
-  new LayersControlMock(baseLayers, overlays, options);
+controlMock.layers = (baseLayers, tileLayers, overlays, options) =>
+  new LayersControlMock(baseLayers, tileLayers, overlays, options);
 
 class MapMock extends LeafletMock.Map {
   constructor(id, options = {}) {

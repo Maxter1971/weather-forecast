@@ -8,7 +8,8 @@
     "lint:fix": "prettier --write . && eslint . --fix",
     "prepare": "husky install",
     "build": "webpack --node-env production",
-    "dev": "webpack serve --node-env development"
+    "dev": "webpack serve --node-env development",
+    "start": "webpack --node-env production"
   },
   "repository": {
     "type": "git",
@@ -39,9 +40,6 @@
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.1",
     "jest": "^28.1.0",
-    "jest-environment-jsdom": "^28.1.1",
-    "jquery": "^3.6.0",
-    "jsdom": "^19.0.0",
     "leaflet": "^1.8.0",
     "lint-staged": "^12.4.1",
     "mini-css-extract-plugin": "^2.6.0",
@@ -63,9 +61,6 @@
   "dependencies": {
     "assert": "^2.0.0",
     "html-loader": "^3.1.0",
-    "jest-environment-jsdom-latest": "^26.6.2",
-    "jquery": "^3.6.0",
-    "jsdom": "^19.0.0",
     "leaflet": "^1.8.0",
     "net": "^1.0.2",
     "string_decoder": "^1.3.0",
