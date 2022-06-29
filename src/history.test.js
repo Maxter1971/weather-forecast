@@ -20,7 +20,7 @@ describe("getHistory", () => {
       "</label>" +
       "</div>";
 
-    window.localStorage = {};
+    // window.localStorage = {};
     window.localStorage = (() => {
       let store = {};
       return {
