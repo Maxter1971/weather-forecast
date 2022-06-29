@@ -27,22 +27,35 @@
 
 В каталоге ./src расположены:
 index.js
-module.js
-module.test.js
+checker.js
+checker.test.js
+history.js
+history.test.js
+loader.js
+map.js
+updateApp.js
+weather.js
+weather.test.js
 
 В каталоге ./css
 style.css
 
-**index.js** импортирует module.js, style.css, создает обработчики на поля поиска на наличие текста _inputChecker_,
+**index.js** импортирует checker.js,history.js,updateApp,loader.js, style.css,
 обработчик нажатия кнопки "Поиск" _buttonClick_ и обработчик выбора населённого пункта в списке "История"
-_selectorClick_. Запускает получение истории функцией getHistory и стартовую инициализацию приложения функцией
-_start_.
+_selectorClick_. Запускает cтартовую инициализацию карты _initializeMap_, получает локацию пользователя функцией _getStartLocation_
+и обновляет приложение функцией _updateAppByCity_.
 
-**module.js** Импортирует _leaflet_ (библиотека для работы с картографией) и _jquery_. Реализует функцию иницализации приложения _start_, которая строит карту, определяет локацию пользователя
-и получает прогноз погоду в текущей локации. Реализует фунции получения и записи истории _getHistory_
-и _setHistory_. Функция _getWeather_ получает прогноз погоды. Функция _updateMap_ перестраивает карту по населенному пункту.
-Реализует _inputChecker_, _selectorClick_, _buttonClick_.
+**checker.js** Реализует проверку наличия текста в поле для ввода населённого пункта
 
-**module.test.js** содержит тесты функций module.js
+**history.js** Реализует функции получения истории _getHistory_ и обновления истории _setHistory_
+
+**loader.js** Реализует асинхронные функции получения локации пользователя функцией _getStartLocation_, получения координат по имени населённого пункта _getCityCoords_,
+получения данных погоды по координатам _getWeatherData_
+
+**map.js** Реализует функцию инициализации карты _initializeMap_ и функцию обновления карты _updateMap_
+
+**updateApp.js** Реализует функцию обновления приложения _updateAppByCity_ в виде цепочки промисов получения координат населённого пункта, обновления карты и погоды
+
+**weather.js** Реализует функцию обновления отображения погоды _setWeather_
 
 **style.css** содержит стили

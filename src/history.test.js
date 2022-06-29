@@ -19,18 +19,18 @@ describe("getHistory", () => {
       '<select class="select"></select>' +
       "</label>" +
       "</div>";
-
-    let city = "Москва";
+    localStorage.clear();
+    let city = "London";
     let setHistoryRes = setHistory(city, localStorage);
     setHistoryRes = setHistory(city, localStorage);
-    city = "Минск";
+    city = "Paris";
     setHistoryRes = setHistory(city, localStorage);
     setHistoryRes = setHistory(city, localStorage);
     const getHistoryRes = getHistory(localStorage);
     expect(setHistoryRes.length).toBe(3);
-    expect(setHistoryRes[1]).toBe("Москва");
+    expect(setHistoryRes[1]).toBe("London");
     expect(getHistoryRes.length).toBe(2);
-    expect(getHistoryRes[0]).toBe("Минск");
-    expect(getHistoryRes[1]).toBe("Москва");
+    expect(getHistoryRes[0]).toBe("Paris");
+    expect(getHistoryRes[1]).toBe("London");
   });
 });
