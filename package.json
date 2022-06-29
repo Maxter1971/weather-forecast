@@ -9,7 +9,7 @@
     "prepare": "husky install",
     "build": "webpack --node-env production",
     "dev": "webpack serve --node-env development",
-    "start": "webpack --node-env production"
+    "start": "webpack --node-env start"
   },
   "repository": {
     "type": "git",
