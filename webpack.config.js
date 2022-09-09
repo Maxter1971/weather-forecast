@@ -1,12 +1,22 @@
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 const { resolve } = require("path");
 const webpack = require("webpack");
 
 module.exports = {
   target: "web",
-  entry: { main: "./src/index.js" },
+  entry: { main: "./src/index.ts" },
+  experiments: {
+    topLevelAwait: true,
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+    fallback: {
+      fs: require.resolve("browserify-fs"),
+    },
+  },
   output: {
     path: resolve(__dirname, "dist"),
     filename: "bundle.js",
@@ -27,6 +37,7 @@ module.exports = {
       $: require.resolve("jquery"),
       jQuery: require.resolve("jquery"),
     }),
+    new NodePolyfillPlugin(),
   ],
   optimization: {
     minimizer: [`...`, new CssMinimizerPlugin()],
@@ -34,18 +45,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /(node_modules)/,
-        use: {
-          loader: "babel-loader",
-        },
+        test: /\.tsx?$/,
+        use: { loader: "babel-loader" },
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
-        test: /\.(jpg|jpeg)$/i,
+        test: /\.(png)$/i,
         type: "asset/resource",
       },
       {
